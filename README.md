@@ -2,6 +2,12 @@
 
 > Build a real world application using the MEAN stack for practicing
 
+> FEATURE
+
+- Authentication using JWT
+- Create a list of task
+- Admin can create, delete, edit a user and add role for user
+
 > INSTALLATION
 
 - BACKEND:
