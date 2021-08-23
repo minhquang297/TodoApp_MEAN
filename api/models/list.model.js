@@ -11,6 +11,10 @@ const ListSchema = new mongoose.Schema({
     _userId: {
         type: mongoose.Types.ObjectId,
         required: true
+    },
+    _email: {
+        type: String,
+        required: true
     }
 
 })

@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 
 
 // JWT Secret
-const jwtSecret = "51778657246321226641fsdklafjasdkljfsklfjd7148924065";
+const jwtSecret = "minhquang2971999";
 
 const UserSchema = new mongoose.Schema({
     email: {
@@ -20,6 +20,11 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 8
+    },
+    isAdmin: {
+        default: false,
+        type: Boolean,
+        required: true,
     },
     sessions: [{
         token: {
@@ -48,7 +53,7 @@ UserSchema.methods.generateAccessAuthToken = function () {
     const user = this;
     return new Promise((resolve, reject) => {
         // Create the JSON Web Token and return that
-        jwt.sign({ _id: user._id.toHexString() }, jwtSecret, { expiresIn: "15m" }, (err, token) => {
+        jwt.sign({ _id: user._id.toHexString(), isAdmin: user.isAdmin }, jwtSecret, { expiresIn: "15m" }, (err, token) => {
             if (!err) {
                 resolve(token);
             } else {

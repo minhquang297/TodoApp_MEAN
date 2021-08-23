@@ -1,3 +1,5 @@
+import { NewUserComponent } from './pages/new-user/new-user.component';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { EditTaskComponent } from './pages/edit-task/edit-task.component';
 import { EditListComponent } from './pages/edit-list/edit-list.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
@@ -13,6 +15,23 @@ const routes: Routes = [
     path: '',
     redirectTo: 'lists',
     pathMatch: 'full',
+  },
+  {
+    path: 'admin',
+    children: [
+      {
+        path: '',
+        component: AdminPageComponent,
+      },
+      {
+        path: 'new-user',
+        component: NewUserComponent,
+      },
+      {
+        path: 'user/:id',
+        component: AdminPageComponent,
+      },
+    ],
   },
   {
     path: 'new-list',

@@ -1,0 +1,44 @@
+<div class="centered-content">
+  <div class="modal-box">
+    <h1 class="title">Create a new list</h1>
+    <div class="field">
+      <div class="control">
+        <input
+          #emailInput
+          class="input is-success"
+          type="text"
+          placeholder="Email..."
+        />
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <input
+          #passInput
+          class="input is-success"
+          type="password"
+          placeholder="Password..."
+        />
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <label class="checkbox">
+          Is Admin
+          <input #isAdminInput type="checkbox" />
+        </label>
+      </div>
+    </div>
+    <div class="buttons is-right">
+      <button class="button is-medium" routerLink="/admin">Cancel</button>
+      <button
+        class="button is-primary has-text-white is-medium"
+        (click)="
+          createUser(emailInput.value, passInput.value, isAdminInput.checked)
+        "
+      >
+        Create
+      </button>
+    </div>
+  </div>
+</div>

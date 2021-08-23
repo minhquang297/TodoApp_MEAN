@@ -1,4 +1,10 @@
 <button (click)="logout()" class="circle-add-button button is-danger"></button>
+<button
+  *ngIf="isAdmin === 'true'"
+  routerLink="/admin"
+  class="circle-admin-button button"
+></button>
+
 <div class="centered-content">
   <div class="task-manager-container">
     <div class="sidebar has-background-white">
@@ -11,7 +17,12 @@
           [routerLink]="['/lists', list._id]"
           routerLinkActive="is-active"
         >
-          <p>{{ list.title }}</p>
+          <p>
+            {{ list.title }}
+            <span *ngIf="isAdmin === 'true'" class="small-text">
+              {{ list._email }}
+            </span>
+          </p>
         </a>
       </div>
 

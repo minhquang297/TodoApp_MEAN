@@ -21,6 +21,7 @@ export class AuthService {
         // the auth token will be in the header of this resp
         this.setSession(
           res.body._id,
+          res.body.isAdmin,
           res.headers.get('x-access-token'),
           res.headers.get('x-refresh-token')
         );
@@ -36,6 +37,7 @@ export class AuthService {
         // the auth token will be in the header of this resp
         this.setSession(
           res.body._id,
+          res.body.isAdmin,
           res.headers.get('x-access-token'),
           res.headers.get('x-refresh-token')
         );
@@ -81,14 +83,21 @@ export class AuthService {
     return localStorage.getItem('x-access-token');
   }
 
-  private setSession(userId: string, accessToken: any, refreshTolen: any) {
+  private setSession(
+    userId: string,
+    isAdmin: string,
+    accessToken: any,
+    refreshTolen: any
+  ) {
     localStorage.setItem('user-id', userId);
+    localStorage.setItem('isAdmin', isAdmin);
     localStorage.setItem('x-access-token', accessToken);
     localStorage.setItem('x-refresh-token', refreshTolen);
   }
 
   private removeSession() {
     localStorage.removeItem('user-id');
+    localStorage.removeItem('isAdmin');
     localStorage.removeItem('x-access-token');
     localStorage.removeItem('x-refresh-token');
   }

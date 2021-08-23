@@ -15,6 +15,7 @@ export class TaskViewComponent implements OnInit {
   tasks!: Task[] | undefined;
 
   selectedListId!: string;
+  isAdmin!: any;
 
   constructor(
     private taskService: TaskService,
@@ -24,6 +25,7 @@ export class TaskViewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.isAdmin = localStorage.getItem('isAdmin');
     this.route.params.subscribe((params: Params) => {
       if (params.listId) {
         this.selectedListId = params.listId;
